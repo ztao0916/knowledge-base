@@ -1,597 +1,855 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>六零导航 - 原型设计</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            position: relative;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.5;
-            z-index: 0;
-        }
-        
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* 顶部导航 */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            margin-bottom: 40px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-menu a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
-        
-        .nav-menu a:hover {
-            color: white;
-        }
-        
-        .datetime {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 14px;
-        }
-        
-        /* Hero区域 */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            margin-bottom: 40px;
-        }
-        
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+        opacity: 0.5;
+        z-index: 0;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* 顶部导航 */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        margin-bottom: 40px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-menu a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-size: 15px;
+        transition: color 0.3s;
+      }
+
+      .nav-menu a:hover {
+        color: white;
+      }
+
+      .datetime {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+      }
+
+      /* Hero区域 */
+      .hero {
+        text-align: center;
+        padding: 60px 20px;
+        margin-bottom: 40px;
+      }
+
+      .hero h1 {
+        color: white;
+        font-size: 48px;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+
+      /* 搜索引擎按钮 */
+      .search-engines {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .search-btn {
+        padding: 12px 24px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        background: white;
+      }
+
+      /* 搜索框 */
+      .search-box {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 18px 60px 18px 25px;
+        border: none;
+        border-radius: 50px;
+        font-size: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .search-submit {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 50px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s;
+      }
+
+      .search-submit:hover {
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      /* 内容区域 */
+      .content-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-title {
+        font-size: 20px;
+        margin-bottom: 25px;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-icon {
+        font-size: 24px;
+      }
+
+      /* 导航网格 */
+      .nav-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 20px;
+      }
+
+      .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #333;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .nav-item:hover {
+        background: #e9ecef;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+      }
+
+      .nav-name {
+        font-size: 14px;
+        text-align: center;
+      }
+
+      /* 黄历样式 */
+      .calendar-content {
+        line-height: 1.8;
+      }
+
+      .calendar-item {
+        padding: 12px 0;
+        border-bottom: 1px solid #e9ecef;
+        display: flex;
+        gap: 20px;
+      }
+
+      .calendar-item:last-child {
+        border-bottom: none;
+      }
+
+      .calendar-label {
+        font-weight: 600;
+        min-width: 60px;
+        color: #495057;
+      }
+
+      .calendar-value {
+        color: #6c757d;
+      }
+
+      .auspicious {
+        color: #28a745;
+      }
+
+      .inauspicious {
+        color: #dc3545;
+      }
+
+      @media (max-width: 768px) {
         .hero h1 {
-            color: white;
-            font-size: 48px;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+          font-size: 32px;
         }
-        
-        .hero p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 16px;
-            margin-bottom: 40px;
-        }
-        
-        /* 搜索引擎按钮 */
+
         .search-engines {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+          gap: 8px;
         }
-        
+
         .search-btn {
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.95);
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          padding: 10px 16px;
+          font-size: 13px;
         }
-        
-        .search-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            background: white;
-        }
-        
-        /* 搜索框 */
-        .search-box {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 18px 60px 18px 25px;
-            border: none;
-            border-radius: 50px;
-            font-size: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-        
-        .search-submit {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 12px 25px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 50px;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .search-submit:hover {
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        /* 内容区域 */
-        .content-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section-title {
-            font-size: 20px;
-            margin-bottom: 25px;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section-icon {
-            font-size: 24px;
-        }
-        
-        /* 导航网格 */
+
         .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 20px;
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+          gap: 12px;
         }
-        
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .nav-item:hover {
-            background: #e9ecef;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        
-        .nav-name {
-            font-size: 14px;
-            text-align: center;
-        }
-        
-        /* 黄历样式 */
-        .calendar-content {
-            line-height: 1.8;
-        }
-        
-        .calendar-item {
-            padding: 12px 0;
-            border-bottom: 1px solid #e9ecef;
-            display: flex;
-            gap: 20px;
-        }
-        
-        .calendar-item:last-child {
-            border-bottom: none;
-        }
-        
-        .calendar-label {
-            font-weight: 600;
-            min-width: 60px;
-            color: #495057;
-        }
-        
-        .calendar-value {
-            color: #6c757d;
-        }
-        
-        .auspicious {
-            color: #28a745;
-        }
-        
-        .inauspicious {
-            color: #dc3545;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .search-engines {
-                gap: 8px;
-            }
-            
-            .search-btn {
-                padding: 10px 16px;
-                font-size: 13px;
-            }
-            
-            .nav-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                gap: 12px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <!-- 顶部导航 -->
-        <header class="header">
-            <div class="logo">
-                <div class="logo-icon">🏠</div>
-                <span>六零导航</span>
-            </div>
-            <nav class="nav-menu">
-                <a href="#home">主页</a>
-                <a href="#check">查看</a>
-                <a href="#about">关于</a>
-            </nav>
-            <div class="datetime" id="datetime">2025年10月8日 星期三 22:38</div>
-        </header>
+      <!-- 顶部导航 -->
+      <header class="header">
+        <div class="logo">
+          <div class="logo-icon">🏠</div>
+          <span>六零导航</span>
+        </div>
+        <nav class="nav-menu">
+          <a href="#home">主页</a>
+          <a href="#check">查看</a>
+          <a href="#about">关于</a>
+        </nav>
+        <div class="datetime" id="datetime">2025年10月8日 星期三 22:38</div>
+      </header>
 
-        <!-- Hero区域 -->
-        <section class="hero">
-            <h1>上网，从六零导航页开始！</h1>
-            <p>遇检求助，读书求理</p>
-            
-            <div class="search-engines">
-                <button class="search-btn">🔍 Bing必应</button>
-                <button class="search-btn">🤖 秘塔AI搜索</button>
-                <button class="search-btn">🔵 百度一下</button>
-                <button class="search-btn">🟢 360搜索</button>
-                <button class="search-btn">⭐ 夸克搜索</button>
-                <button class="search-btn">🦊 搜狗搜索</button>
-                <button class="search-btn">💡 知乎搜索</button>
-                <button class="search-btn">🌐 谷歌搜索</button>
-                <button class="search-btn">📺 哔哩哔哩</button>
-                <button class="search-btn">🌍 在线翻译</button>
-            </div>
-            
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="没有广告，直达结果">
-                <button class="search-submit">🔍</button>
-            </div>
-        </section>
+      <!-- Hero区域 -->
+      <section class="hero">
+        <h1>上网，从六零导航页开始！</h1>
+        <p>遇检求助，读书求理</p>
 
-        <!-- 常用导航 -->
-        <section class="content-section">
-            <h2 class="section-title">
-                <span class="section-icon">🔥</span>
-                常用导航
-            </h2>
-            <div class="nav-grid">
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">▶️</div>
-                    <div class="nav-name">腾讯视频</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📺</div>
-                    <div class="nav-name">优酷</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🎬</div>
-                    <div class="nav-name">爱奇艺</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">📱</div>
-                    <div class="nav-name">哔哩哔哩</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);">🐦</div>
-                    <div class="nav-name">微博</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">📝</div>
-                    <div class="nav-name">百度贴吧</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">📺</div>
-                    <div class="nav-name">CCTV直播</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">🎵</div>
-                    <div class="nav-name">抖音网页版</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">📹</div>
-                    <div class="nav-name">快手网页版</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);">💬</div>
-                    <div class="nav-name">知乎</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">🔍</div>
-                    <div class="nav-name">百度</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🛒</div>
-                    <div class="nav-name">淘宝</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🎵</div>
-                    <div class="nav-name">网易云音乐</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">🎵</div>
-                    <div class="nav-name">QQ音乐</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🎵</div>
-                    <div class="nav-name">酷狗音乐</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">💬</div>
-                    <div class="nav-name">文件传输助手</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">📦</div>
-                    <div class="nav-name">腾讯软件中心</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #fed6e3 0%, #fad0c4 100%);">🔥</div>
-                    <div class="nav-name">每日热榜</div>
-                </a>
-            </div>
-        </section>
+        <div class="search-engines">
+          <button class="search-btn">🔍 Bing必应</button>
+          <button class="search-btn">🤖 秘塔AI搜索</button>
+          <button class="search-btn">⭐ 夸克搜索</button>
+          <button class="search-btn">💡 知乎搜索</button>
+          <button class="search-btn">🌐 谷歌搜索</button>
+        </div>
 
-        <!-- AI工具 -->
-        <section class="content-section">
-            <h2 class="section-title">
-                <span class="section-icon">🤖</span>
-                AI工具
-            </h2>
-            <div class="nav-grid">
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">👤</div>
-                    <div class="nav-name">抖音AI豆包</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">📝</div>
-                    <div class="nav-name">文心一言</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">🔍</div>
-                    <div class="nav-name">DeepSeek</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">📊</div>
-                    <div class="nav-name">AiPPT</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">🗣️</div>
-                    <div class="nav-name">智谱清言</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">🔍</div>
-                    <div class="nav-name">讯飞绘镜</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">😊</div>
-                    <div class="nav-name">白日梦AI</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">🎨</div>
-                    <div class="nav-name">美图设计室</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">👥</div>
-                    <div class="nav-name">堆友</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">🛠️</div>
-                    <div class="nav-name">AI工具集</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);">📱</div>
-                    <div class="nav-name">Kimi</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">💬</div>
-                    <div class="nav-name">ChatGPT</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);">🔍</div>
-                    <div class="nav-name">纳米AI搜索</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #fed6e3 0%, #fad0c4 100%);">🔍</div>
-                    <div class="nav-name">360AI搜索</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🔍</div>
-                    <div class="nav-name">秘塔AI搜索</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">💎</div>
-                    <div class="nav-name">腾讯元宝</div>
-                </a>
-                <a class="nav-item">
-                    <div class="nav-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">📋</div>
-                    <div class="nav-name">通义</div>
-                </a>
-            </div>
-        </section>
+        <div class="search-box">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="没有广告，直达结果"
+          />
+          <button class="search-submit">🔍</button>
+        </div>
+      </section>
 
-        <!-- 今日黄历 -->
-        <section class="content-section">
-            <h2 class="section-title">
-                <span class="section-icon">📅</span>
-                今日黄历
-                <span style="margin-left: auto; font-size: 14px; color: #6c757d;">农历八月十七</span>
-            </h2>
-            <div class="calendar-content">
-                <div class="calendar-item">
-                    <span class="calendar-label">乙巳蛇年</span>
-                    <span class="calendar-value">丙戌月 庚戌日 星期三</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label">五行</span>
-                    <span class="calendar-value">钗钏金</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label">冲煞</span>
-                    <span class="calendar-value">冲(甲辰)龙 煞北</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label">彭祖</span>
-                    <span class="calendar-value">庚不经络织机虚张 戌不吃犬作怪上床</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label">喜神</span>
-                    <span class="calendar-value">西北</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label">福神</span>
-                    <span class="calendar-value">西南</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label">财神</span>
-                    <span class="calendar-value">正东</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label">吉神</span>
-                    <span class="calendar-value">月德 天恩 母合 守日 吉期 续世</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label">凶神</span>
-                    <span class="calendar-value">月害 血忌 天牢</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label auspicious">宜</span>
-                    <span class="calendar-value auspicious">祭祀 出行 裁衣 冠笄 会亲友 造畜稠 嫁娶 竖柱 上梁 移徙 纳财 纳畜</span>
-                </div>
-                <div class="calendar-item">
-                    <span class="calendar-label inauspicious">忌</span>
-                    <span class="calendar-value inauspicious">动土 伐木 作梁 行丧 安葬 开生坟</span>
-                </div>
+      <!-- 常用导航 -->
+      <section class="content-section">
+        <h2 class="section-title">
+          <span class="section-icon">🔥</span>
+          常用导航
+        </h2>
+        <div class="nav-grid">
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              "
+            >
+              ▶️
             </div>
-        </section>
+            <div class="nav-name">腾讯视频</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              📺
+            </div>
+            <div class="nav-name">优酷</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              🎬
+            </div>
+            <div class="nav-name">爱奇艺</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+              "
+            >
+              📱
+            </div>
+            <div class="nav-name">哔哩哔哩</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+              "
+            >
+              🐦
+            </div>
+            <div class="nav-name">微博</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+              "
+            >
+              📝
+            </div>
+            <div class="nav-name">百度贴吧</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+              "
+            >
+              📺
+            </div>
+            <div class="nav-name">CCTV直播</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+              "
+            >
+              🎵
+            </div>
+            <div class="nav-name">抖音网页版</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+              "
+            >
+              📹
+            </div>
+            <div class="nav-name">快手网页版</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);
+              "
+            >
+              💬
+            </div>
+            <div class="nav-name">知乎</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+              "
+            >
+              🔍
+            </div>
+            <div class="nav-name">百度</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              🛒
+            </div>
+            <div class="nav-name">淘宝</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              🎵
+            </div>
+            <div class="nav-name">网易云音乐</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              "
+            >
+              🎵
+            </div>
+            <div class="nav-name">QQ音乐</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+              "
+            >
+              🎵
+            </div>
+            <div class="nav-name">酷狗音乐</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+              "
+            >
+              💬
+            </div>
+            <div class="nav-name">文件传输助手</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+              "
+            >
+              📦
+            </div>
+            <div class="nav-name">腾讯软件中心</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #fed6e3 0%, #fad0c4 100%);
+              "
+            >
+              🔥
+            </div>
+            <div class="nav-name">每日热榜</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- AI工具 -->
+      <section class="content-section">
+        <h2 class="section-title">
+          <span class="section-icon">🤖</span>
+          AI工具
+        </h2>
+        <div class="nav-grid">
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              "
+            >
+              👤
+            </div>
+            <div class="nav-name">抖音AI豆包</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              📝
+            </div>
+            <div class="nav-name">文心一言</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              "
+            >
+              🔍
+            </div>
+            <div class="nav-name">DeepSeek</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+              "
+            >
+              📊
+            </div>
+            <div class="nav-name">AiPPT</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+              "
+            >
+              🗣️
+            </div>
+            <div class="nav-name">智谱清言</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+              "
+            >
+              🔍
+            </div>
+            <div class="nav-name">讯飞绘镜</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+              "
+            >
+              😊
+            </div>
+            <div class="nav-name">白日梦AI</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+              "
+            >
+              🎨
+            </div>
+            <div class="nav-name">美图设计室</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              👥
+            </div>
+            <div class="nav-name">堆友</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+              "
+            >
+              🛠️
+            </div>
+            <div class="nav-name">AI工具集</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+              "
+            >
+              📱
+            </div>
+            <div class="nav-name">Kimi</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+              "
+            >
+              💬
+            </div>
+            <div class="nav-name">ChatGPT</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);
+              "
+            >
+              🔍
+            </div>
+            <div class="nav-name">纳米AI搜索</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #fed6e3 0%, #fad0c4 100%);
+              "
+            >
+              🔍
+            </div>
+            <div class="nav-name">360AI搜索</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              "
+            >
+              🔍
+            </div>
+            <div class="nav-name">秘塔AI搜索</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              💎
+            </div>
+            <div class="nav-name">腾讯元宝</div>
+          </a>
+          <a class="nav-item">
+            <div
+              class="nav-icon"
+              style="
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              "
+            >
+              📋
+            </div>
+            <div class="nav-name">通义</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 今日黄历 -->
+      <section class="content-section">
+        <h2 class="section-title">
+          <span class="section-icon">📅</span>
+          今日黄历
+          <span style="margin-left: auto; font-size: 14px; color: #6c757d"
+            >农历八月十七</span
+          >
+        </h2>
+        <div class="calendar-content">
+          <div class="calendar-item">
+            <span class="calendar-label">乙巳蛇年</span>
+            <span class="calendar-value">丙戌月 庚戌日 星期三</span>
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label">五行</span>
+            <span class="calendar-value">钗钏金</span>
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label">冲煞</span>
+            <span class="calendar-value">冲(甲辰)龙 煞北</span>
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label">彭祖</span>
+            <span class="calendar-value"
+              >庚不经络织机虚张 戌不吃犬作怪上床</span
+            >
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label">喜神</span>
+            <span class="calendar-value">西北</span>
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label">福神</span>
+            <span class="calendar-value">西南</span>
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label">财神</span>
+            <span class="calendar-value">正东</span>
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label">吉神</span>
+            <span class="calendar-value">月德 天恩 母合 守日 吉期 续世</span>
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label">凶神</span>
+            <span class="calendar-value">月害 血忌 天牢</span>
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label auspicious">宜</span>
+            <span class="calendar-value auspicious"
+              >祭祀 出行 裁衣 冠笄 会亲友 造畜稠 嫁娶 竖柱 上梁 移徙 纳财
+              纳畜</span
+            >
+          </div>
+          <div class="calendar-item">
+            <span class="calendar-label inauspicious">忌</span>
+            <span class="calendar-value inauspicious"
+              >动土 伐木 作梁 行丧 安葬 开生坟</span
+            >
+          </div>
+        </div>
+      </section>
     </div>
 
     <script>
-        // 更新时间
-        function updateTime() {
-            const now = new Date();
-            const options = { 
-                year: 'numeric', 
-                month: '2-digit', 
-                day: '2-digit',
-                weekday: 'long',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            const timeStr = now.toLocaleString('zh-CN', options).replace(/\//g, '年').replace(' ', '日 ');
-            document.getElementById('datetime').textContent = timeStr;
-        }
-        
-        updateTime();
-        setInterval(updateTime, 60000);
+      // 更新时间
+      function updateTime() {
+        const now = new Date();
+        const options = {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          weekday: "long",
+          hour: "2-digit",
+          minute: "2-digit",
+        };
+        const timeStr = now
+          .toLocaleString("zh-CN", options)
+          .replace(/\//g, "年")
+          .replace(" ", "日 ");
+        document.getElementById("datetime").textContent = timeStr;
+      }
 
-        // 搜索按钮点击效果
-        document.querySelectorAll('.search-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const engine = this.textContent.trim();
-                console.log('选择搜索引擎:', engine);
-                this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                this.style.color = 'white';
-                
-                setTimeout(() => {
-                    this.style.background = 'rgba(255, 255, 255, 0.95)';
-                    this.style.color = 'inherit';
-                }, 200);
-            });
-        });
+      updateTime();
+      setInterval(updateTime, 60000);
 
-        // 导航项悬停效果
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                console.log('点击:', this.querySelector('.nav-name').textContent);
-            });
+      // 搜索按钮点击效果
+      document.querySelectorAll(".search-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const engine = this.textContent.trim();
+          console.log("选择搜索引擎:", engine);
+          this.style.background =
+            "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
+          this.style.color = "white";
+
+          setTimeout(() => {
+            this.style.background = "rgba(255, 255, 255, 0.95)";
+            this.style.color = "inherit";
+          }, 200);
         });
+      });
+
+      // 导航项悬停效果
+      document.querySelectorAll(".nav-item").forEach((item) => {
+        item.addEventListener("click", function () {
+          console.log("点击:", this.querySelector(".nav-name").textContent);
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
