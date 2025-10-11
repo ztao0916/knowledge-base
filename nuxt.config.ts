@@ -4,7 +4,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   // CSS 配置
   css: ["~/assets/css/main.css"],
-  modules: ["@nuxt/ui", "@nuxt/eslint"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/eslint",
+    "@nuxt/image",
+    "@pinia/nuxt",
+    "@vueuse/nuxt",
+  ],
   ui: {
     fonts: false, // 禁用从 Google Fonts 自动获取字体
   },
