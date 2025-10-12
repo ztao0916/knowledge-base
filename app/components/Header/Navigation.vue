@@ -4,7 +4,7 @@
     :style="{
       backgroundColor: 'rgba(255, 255, 255, 0.8)',
       borderBottomColor: 'rgba(255, 255, 255, 0.1)',
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)'
+      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)',
     }"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,11 +14,7 @@
           class="flex items-center space-x-4 cursor-pointer hover:scale-105 transition-transform duration-200"
         >
           <div class="flex-shrink-0">
-            <img
-              src="/logo.svg"
-              alt="九贰零玖要录"
-              class="w-8 h-8"
-            />
+            <img src="/logo.svg" alt="九贰零玖要录" class="w-8 h-8" />
           </div>
           <div class="hidden sm:block">
             <h1 class="text-xl font-bold text-gray-900 dark:text-white">
@@ -69,8 +65,8 @@
             variant="ghost"
             size="sm"
             square
-            @click="toggleColorMode"
             class="hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+            @click="toggleColorMode"
           >
             <UIcon
               :name="
@@ -88,8 +84,8 @@
             variant="ghost"
             size="sm"
             square
-            @click="toggleMobileMenu"
             class="md:hidden hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+            @click="toggleMobileMenu"
           >
             <UIcon
               :name="
@@ -116,7 +112,8 @@
           :style="{
             backgroundColor: 'rgba(255, 255, 255, 0.95)',
             borderBottomColor: 'rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+            boxShadow:
+              '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
           }"
         >
           <div class="px-4 py-6">
@@ -129,7 +126,6 @@
             <div class="space-y-2">
               <NuxtLink
                 to="/"
-                @click="closeMobileMenu"
                 class="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-medium transition-all duration-200"
                 :class="{
                   'text-primary-600 dark:text-primary-400': $route.path === '/',
@@ -139,12 +135,12 @@
                     ? { backgroundColor: 'rgba(var(--color-primary-50), 1)' }
                     : {}
                 "
+                @click="closeMobileMenu"
               >
                 首页
               </NuxtLink>
               <NuxtLink
                 to="/about"
-                @click="closeMobileMenu"
                 class="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-medium transition-all duration-200"
                 :class="{
                   'text-primary-600 dark:text-primary-400':
@@ -155,6 +151,7 @@
                     ? { backgroundColor: 'rgba(var(--color-primary-50), 1)' }
                     : {}
                 "
+                @click="closeMobileMenu"
               >
                 关于
               </NuxtLink>
