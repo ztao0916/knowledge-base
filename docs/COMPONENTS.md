@@ -1,8 +1,8 @@
-# ztaoHub 组件使用指南
+# 九贰零玖要录 组件使用指南
 
-## 组件概览
+## 概述
 
-ztaoHub 基于 NuxtUI 构建，采用组件化架构设计。本文档详细介绍了项目中所有自定义组件的使用方法、属性配置和最佳实践。
+九贰零玖要录 基于 NuxtUI 构建，采用组件化架构设计。本文档详细介绍了项目中所有自定义组件的使用方法、属性配置和最佳实践。
 
 ### 组件分类
 
@@ -133,8 +133,8 @@ ztaoHub 基于 NuxtUI 构建，采用组件化架构设计。本文档详细介�
 <script setup>
 const logoConfig = {
   src: '/logo.svg',
-  alt: 'ztaoHub',
-  text: 'ztaoHub'
+  alt: '九贰零玖要录',
+  text: '九贰零玖要录'
 }
 
 const navItems = [

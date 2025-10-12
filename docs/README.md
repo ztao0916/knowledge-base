@@ -1,8 +1,8 @@
-# ztaoHub - 个人导航网站开发文档
+# 九贰零玖要录 - 个人导航网站开发文档
 
-## 项目概述
+## 项目简介
 
-ztaoHub 是一个基于 Nuxt 4 框架开发的现代化个人导航网站，提供简洁美观的网址导航服务。项目采用响应式设计，支持多种搜索引擎集成，并具备黄历显示等特色功能。
+九贰零玖要录 是一个基于 Nuxt 4 框架开发的现代化个人导航网站，提供简洁美观的网址导航服务。项目采用响应式设计，支持多种搜索引擎集成，并具备黄历显示等特色功能。
 
 ### 核心特性
 
@@ -152,7 +152,7 @@ nuxt4-nav/
   <header class="header-glass">
     <div class="container">
       <div class="logo-section">
-        <h1>ztaoHub</h1>
+        <h1>九贰零玖要录</h1>
       </div>
       <div class="time-display">
         <TimeDisplay />
@@ -564,10 +564,10 @@ export default defineNuxtConfig({
 ```vue
 <script setup>
 useSeoMeta({
-  title: 'ztaoHub - 上网从这里开始',
-  ogTitle: 'ztaoHub - 个人导航网站',
-  description: 'ztaoHub提供最实用的网址导航服务，整合常用网站，让上网更简单高效。',
-  ogDescription: 'ztaoHub提供最实用的网址导航服务，整合常用网站，让上网更简单高效。',
+  title: '九贰零玖要录 - 上网从这里开始',
+  ogTitle: '九贰零玖要录 - 个人导航网站',
+  description: '九贰零玖要录提供最实用的网址导航服务，整合常用网站，让上网更简单高效。',
+  ogDescription: '九贰零玖要录提供最实用的网址导航服务，整合常用网站，让上网更简单高效。',
   ogImage: '/og-image.jpg',
   twitterCard: 'summary_large_image'
 })
@@ -580,13 +580,13 @@ useSeoMeta({
 <script setup>
 useSchemaOrg([
   defineWebSite({
-    name: 'ztaoHub',
+    name: '九贰零玖要录',
     url: 'https://ztaohub.com',
-    description: 'ztaoHub提供最实用的网址导航服务'
+    description: '九贰零玖要录提供最实用的网址导航服务'
   }),
   defineWebPage({
     '@type': 'WebPage',
-    name: 'ztaoHub - 个人导航网站',
+    name: '九贰零玖要录 - 个人导航网站',
     url: 'https://ztaohub.com'
   })
 ])

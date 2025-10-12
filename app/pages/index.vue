@@ -3,7 +3,7 @@
     <!-- 欢迎区域 -->
     <section class="text-center py-12">
       <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-        欢迎来到 ztaoHub
+        欢迎来到 九贰零玖要录
       </h1>
       <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
         个人导航网站 - 您的专属网址收藏夹

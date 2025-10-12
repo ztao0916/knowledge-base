@@ -17,7 +17,7 @@
         <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <!-- 版权信息 -->
           <div class="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
-            <span>&copy; 2024 ztaoHub</span>
+            <span>&copy; 2024 九贰零玖要录</span>
             <span>·</span>
             <span>上网从这里开始</span>
           </div>

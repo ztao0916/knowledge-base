@@ -1,8 +1,8 @@
-# ztaoHub 数据库设计文档
+# 九贰零玖要录 数据库设计文档
 
 ## 数据库概览
 
-ztaoHub 使用 Cloudflare D1 作为主要数据库，这是一个基于 SQLite 的分布式 SQL 数据库，运行在 Cloudflare 的边缘网络上。数据库设计遵循关系型数据库的最佳实践，确保数据一致性、性能和可扩展性。
+九贰零玖要录 使用 Cloudflare D1 作为主要数据库，这是一个基于 SQLite 的分布式 SQL 数据库，运行在 Cloudflare 的边缘网络上。数据库设计遵循关系型数据库的最佳实践，确保数据一致性、性能和可扩展性。
 
 ### 技术特性
 
@@ -234,9 +234,9 @@ CREATE INDEX idx_site_config_public ON site_config(is_public);
 
 ```sql
 INSERT INTO site_config (key, value, description, is_public) VALUES
-('site_title', 'ztaoHub - 个人导航网站', '网站标题', 1),
+('site_title', '九贰零玖要录 - 个人导航网站', '网站标题', 1),
 ('site_description', '简洁高效的个人导航网站，收录优质网站资源', '网站描述', 1),
-('site_keywords', 'ztaoHub,导航,网站导航,个人导航', '网站关键词', 1),
+('site_keywords', '九贰零玖要录,导航,网站导航,个人导航', '网站关键词', 1),
 ('site_logo', '/logo.svg', '网站 Logo', 1),
 ('theme_color', '#3b82f6', '主题色', 1),
 ('enable_analytics', 'true', '是否启用统计', 0),
