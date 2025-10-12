@@ -54,19 +54,6 @@
               :class="{ 'w-full': $route.path === '/about' }"
             ></span>
           </NuxtLink>
-          <NuxtLink
-            to="/docs"
-            class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 relative group"
-            :class="{
-              'text-primary-600 dark:text-primary-400': $route.path === '/docs',
-            }"
-          >
-            文档
-            <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"
-              :class="{ 'w-full': $route.path === '/docs' }"
-            ></span>
-          </NuxtLink>
         </nav>
 
         <!-- 右侧功能区域 -->
@@ -167,22 +154,6 @@
                 "
               >
                 关于
-              </NuxtLink>
-              <NuxtLink
-                to="/docs"
-                @click="closeMobileMenu"
-                class="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-medium transition-all duration-200"
-                :class="{
-                  'text-primary-600 dark:text-primary-400':
-                    $route.path === '/docs',
-                }"
-                :style="
-                  $route.path === '/docs'
-                    ? { backgroundColor: 'rgba(var(--color-primary-50), 1)' }
-                    : {}
-                "
-              >
-                文档
               </NuxtLink>
             </div>
           </div>
