@@ -15,7 +15,7 @@ export default defineNuxtConfig({
           name: "description",
           content: "基于 Nuxt4 和 NuxtUI 构建的现代导航应用",
         },
-        { name: "theme-color", content: "#ffffff" },
+        { name: "theme-color", content: "#B53427" },
       ],
       link: [
         // 默认 favicon
