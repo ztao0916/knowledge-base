@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆角方印 -->
+  <rect x="8" y="8" width="224" height="224" rx="16" ry="16" fill="#B53427"/>
+  <!-- 米绢底纹（可删） -->
+  <rect x="16" y="16" width="208" height="208" rx="12" ry="12" fill="#F7E7CE" opacity="0.08"/>
+  <!-- 纵向分割线 -->
+  <line x1="120" y1="24" x2="120" y2="216" stroke="#F7E7CE" stroke-width="2"/>
+  <!-- 文字：九贰零玖 -->
+  <text x="60" y="75" font-family="Source Han Serif SC" font-weight="900" font-size="42" fill="#F7E7CE" text-anchor="middle">九贰</text>
+  <text x="60" y="125" font-family="Source Han Serif SC" font-weight="900" font-size="42" fill="#F7E7CE" text-anchor="middle">零玖</text>
+  <!-- 文字：要录 -->
+  <text x="180" y="95" font-family="Source Han Serif SC" font-weight="900" font-size="48" fill="#F7E7CE" text-anchor="middle">要</text>
+  <text x="180" y="155" font-family="Source Han Serif SC" font-weight="900" font-size="48" fill="#F7E7CE" text-anchor="middle">录</text>
+</svg>
