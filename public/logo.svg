@@ -1,15 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-  <!-- 背景圆角方印 -->
-  <rect x="8" y="8" width="224" height="224" rx="16" ry="16" fill="#B53427"/>
-  <!-- 米绢底纹（可删） -->
-  <rect x="16" y="16" width="208" height="208" rx="12" ry="12" fill="#F7E7CE" opacity="0.08"/>
-  <!-- 纵向分割线 -->
-  <line x1="120" y1="24" x2="120" y2="216" stroke="#F7E7CE" stroke-width="2"/>
-  <!-- 文字：九贰零玖 -->
-  <text x="60" y="75" font-family="Source Han Serif SC" font-weight="900" font-size="42" fill="#F7E7CE" text-anchor="middle">九贰</text>
-  <text x="60" y="125" font-family="Source Han Serif SC" font-weight="900" font-size="42" fill="#F7E7CE" text-anchor="middle">零玖</text>
-  <!-- 文字：要录 -->
-  <text x="180" y="95" font-family="Source Han Serif SC" font-weight="900" font-size="48" fill="#F7E7CE" text-anchor="middle">要</text>
-  <text x="180" y="155" font-family="Source Han Serif SC" font-weight="900" font-size="48" fill="#F7E7CE" text-anchor="middle">录</text>
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 印章纹理效果 -->
+    <filter id="roughEdge">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="240" height="240" fill="#ac2e23"/>
+  
+  <!-- 外圆印章边框 -->
+  <circle cx="120" cy="120" r="100" fill="none" stroke="#FFFFFF" stroke-width="7" filter="url(#roughEdge)"/>
+  <circle cx="120" cy="120" r="90" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+  
+  <!-- 简笔画山峰 -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 中间主峰 -->
+    <path d="M 80 95 L 120 50 L 160 95"/>
+    <!-- 左侧小山 -->
+    <path d="M 60 95 L 80 70 L 100 95"/>
+    <!-- 右侧小山 -->
+    <path d="M 140 95 L 160 70 L 180 95"/>
+  </g>
+  
+  <!-- 山的基线 -->
+  <line x1="55" y1="95" x2="185" y2="95" stroke="#FFFFFF" stroke-width="2"/>
+  
+  <!-- 简笔画水波纹 -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round">
+    <!-- 第一层水波 -->
+    <path d="M 60 130 Q 75 125 90 130 T 120 130 T 150 130 T 180 130"/>
+    <!-- 第二层水波 -->
+    <path d="M 65 142 Q 80 137 95 142 T 125 142 T 155 142 T 175 142"/>
+    <!-- 第三层水波 -->
+    <path d="M 70 154 Q 85 149 100 154 T 130 154 T 160 154 T 170 154"/>
+  </g>
+  
+  <!-- FairyHub 文字 -->
+  <text x="120" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#FFFFFF" letter-spacing="1">
+    FairyHub
+  </text>
+  
+  <!-- 四角装饰点 -->
+  <circle cx="40" cy="120" r="2.5" fill="#FFFFFF"/>
+  <circle cx="200" cy="120" r="2.5" fill="#FFFFFF"/>
+  <circle cx="120" cy="40" r="2.5" fill="#FFFFFF"/>
+  <circle cx="120" cy="200" r="2.5" fill="#FFFFFF"/>
 </svg>
