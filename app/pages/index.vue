@@ -49,7 +49,7 @@
             </div>
           </div>
           <div class="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
-          <div class="w-3/4 h-3 bg-gray-200 dark:bg-gray-700 rounded"></div>
+          <div class="w-3/4 h-3 bg-gray-200 dark:bg-gray-700 rounded" style="width: 75%;"></div>
         </div>
       </div>
     </section>
