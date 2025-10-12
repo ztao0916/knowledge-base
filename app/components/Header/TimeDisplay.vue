@@ -2,7 +2,7 @@
   <div class="select-none">
     <div class="flex items-center text-right">
       <!-- 年月日星期在同一行 -->
-      <div class="text-lg font-medium text-gray-900 dark:text-white font-mono tabular-nums">
+      <div class="text-sm font-medium text-gray-900 dark:text-white font-mono tabular-nums">
         {{ currentDateWithWeekday }}
       </div>
     </div>

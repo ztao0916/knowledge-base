@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           name: "description",
-          content: "基于 Nuxt4 和 NuxtUI 构建的现代导航应用",
+          content: "九贰零玖要录,便捷的导航应用",
         },
         { name: "theme-color", content: "#B53427" },
       ],

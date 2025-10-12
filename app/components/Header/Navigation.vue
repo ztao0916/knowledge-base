@@ -1,9 +1,10 @@
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b"
+    class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b shadow-sm"
     :style="{
       backgroundColor: 'rgba(255, 255, 255, 0.8)',
       borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)'
     }"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -111,10 +112,11 @@
       >
         <div
           v-if="isMobileMenuOpen"
-          class="md:hidden absolute top-full left-0 right-0 backdrop-blur-md border-b"
+          class="md:hidden absolute top-full left-0 right-0 backdrop-blur-md border-b shadow-md"
           :style="{
             backgroundColor: 'rgba(255, 255, 255, 0.95)',
             borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
           }"
         >
           <div class="px-4 py-6">
