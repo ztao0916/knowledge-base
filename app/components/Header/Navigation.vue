@@ -14,11 +14,11 @@
           class="flex items-center space-x-4 cursor-pointer hover:scale-105 transition-transform duration-200"
         >
           <div class="flex-shrink-0">
-            <img src="/logo.svg" alt="九贰零玖要录" class="w-8 h-8" />
+            <img src="/logo.svg" alt="fairyCity" class="w-8 h-8" />
           </div>
           <div class="hidden sm:block">
             <h1 class="text-xl font-bold text-gray-900 dark:text-white">
-              九贰零玖要录
+              fairyCity
             </h1>
           </div>
         </div>

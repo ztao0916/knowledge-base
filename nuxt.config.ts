@@ -7,13 +7,13 @@ export default defineNuxtConfig({
   // 应用配置
   app: {
     head: {
-      title: "九贰零玖要录",
+      title: "fairyCity",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           name: "description",
-          content: "九贰零玖要录,便捷的导航应用",
+          content: "fairyCity,便捷的导航应用",
         },
         { name: "theme-color", content: "#B53427" },
       ],

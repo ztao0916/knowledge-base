@@ -1,8 +1,8 @@
-# 九贰零玖要录 部署指南
+# fairyCity 部署指南
 
 ## 部署概览
 
-九贰零玖要录 项目设计为在 Cloudflare 生态系统中运行，充分利用 Cloudflare Pages、D1 数据库、Workers 和 CDN 的优势，实现全球边缘部署和极致性能。
+fairyCity 项目设计为在 Cloudflare 生态系统中运行，充分利用 Cloudflare Pages、D1 数据库、Workers 和 CDN 的优势，实现全球边缘部署和极致性能。
 
 ### 部署架构
 
@@ -241,9 +241,9 @@ INSERT OR IGNORE INTO search_engines (name, url, icon, placeholder, sort_order) 
 
 -- 插入站点配置
 INSERT OR IGNORE INTO site_config (key, value, description, type) VALUES
-('site_title', '九贰零玖要录 - 个人导航网站', '网站标题', 'string'),
+('site_title', 'fairyCity - 个人导航网站', '网站标题', 'string'),
 ('site_description', '简洁高效的个人导航网站，收录优质网站资源', '网站描述', 'string'),
-('site_keywords', '九贰零玖要录,导航,网站导航,个人导航,书签', '网站关键词', 'string'),
+('site_keywords', 'fairyCity,导航,网站导航,个人导航,书签', '网站关键词', 'string'),
 ('site_logo', '/logo.svg', '网站Logo', 'string'),
 ('theme_color', '#3b82f6', '主题色', 'color'),
 ('enable_analytics', 'true', '是否启用统计', 'boolean'),

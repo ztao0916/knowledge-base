@@ -1,8 +1,8 @@
-# 九贰零玖要录 API 接口文档
+# fairyCity API 接口文档
 
 ## API 概览
 
-九贰零玖要录 提供 RESTful API 接口，支持导航数据的增删改查操作。API 基于 Nuxt 4 的服务端路由构建，运行在 Cloudflare Workers 环境中，具有全球边缘分布的特性。
+fairyCity 提供 RESTful API 接口，支持导航数据的增删改查操作。API 基于 Nuxt 4 的服务端路由构建，运行在 Cloudflare Workers 环境中，具有全球边缘分布的特性。
 
 ### 基础信息
 
