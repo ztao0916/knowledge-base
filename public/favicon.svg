@@ -1,30 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    <!-- 蓝紫渐变 - 匹配网站主色调 -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 内部发光效果 -->
+    <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.3" />
+    </radialGradient>
+    
+    <!-- 山峰阴影渐变 -->
+    <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0e7ff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#c7d2fe;stop-opacity:0.6" />
     </linearGradient>
   </defs>
   
-  <!-- 背景圆形 -->
-  <circle cx="64" cy="64" r="60" fill="url(#grad)"/>
+  <!-- 背景圆形 - 玻璃拟态效果 -->
+  <circle cx="64" cy="64" r="60" fill="url(#mainGradient)" opacity="0.9"/>
+  <circle cx="64" cy="64" r="55" fill="url(#innerGlow)" opacity="0.6"/>
   
-  <!-- 山 - 尖锐山峰 -->
-  <g>
-    <!-- 远山 -->
-    <path d="M 24 76 L 40 56 L 48 64 L 64 52 L 80 60 L 88 56 L 104 76" 
-          fill="none" stroke="white" stroke-width="4" opacity="0.5" stroke-linecap="round" stroke-linejoin="miter"/>
+  <!-- 具象化山峰 - 更具细节的山形 -->
+  <g transform="translate(0, 5)">
+    <!-- 远山 - 更丰富的轮廓 -->
+    <path d="M 18 68 L 25 55 L 32 48 L 40 55 L 48 65" 
+          fill="none" stroke="white" stroke-width="2.5" opacity="0.6" 
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 25 55 L 32 48 L 40 55" 
+          fill="url(#mountainGradient)" opacity="0.4"/>
     
-    <!-- 近山 -->
-    <path d="M 16 88 L 32 64 L 44 72 L 64 56 L 84 68 L 96 64 L 112 88" 
-          fill="none" stroke="white" stroke-width="5" opacity="0.9" stroke-linecap="round" stroke-linejoin="miter"/>
+    <!-- 中山 - 主要山峰 -->
+    <path d="M 35 72 L 42 42 L 50 35 L 58 45 L 68 62" 
+          fill="none" stroke="white" stroke-width="3.5" opacity="0.8" 
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 42 42 L 50 35 L 58 45" 
+          fill="url(#mountainGradient)" opacity="0.5"/>
+    
+    <!-- 近山 - 最突出的山峰 -->
+    <path d="M 55 75 L 65 38 L 75 30 L 85 40 L 95 58" 
+          fill="none" stroke="white" stroke-width="4.5" opacity="0.9" 
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 65 38 L 75 30 L 85 40" 
+          fill="url(#mountainGradient)" opacity="0.6"/>
   </g>
   
-  <!-- 水波纹 -->
-  <g opacity="0.7">
-    <path d="M 20 100 Q 40 96 60 100 Q 80 104 100 100" 
-          fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-    <path d="M 28 108 Q 48 104 68 108 Q 88 112 108 108" 
-          fill="none" stroke="white" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+  <!-- 多层次水线条 - 更丰富的水流 -->
+  <g>
+    <!-- 主水流 -->
+    <path d="M 12 92 Q 25 88 40 92 Q 55 95 70 92 Q 85 89 100 92 Q 110 94 118 92" 
+          fill="none" stroke="white" stroke-width="3.5" opacity="0.9" 
+          stroke-linecap="round"/>
+    
+    <!-- 第二层水流 -->
+    <path d="M 18 98 Q 32 94 48 98 Q 65 101 82 98 Q 95 96 108 98" 
+          fill="none" stroke="white" stroke-width="3" opacity="0.7" 
+          stroke-linecap="round"/>
+    
+    <!-- 第三层水流 -->
+    <path d="M 22 104 Q 38 100 55 104 Q 75 107 90 104 Q 105 102 115 104" 
+          fill="none" stroke="white" stroke-width="2.5" opacity="0.5" 
+          stroke-linecap="round"/>
+    
+    <!-- 细小波纹 -->
+    <path d="M 15 108 Q 30 106 45 108 Q 60 110 75 108 Q 90 106 105 108" 
+          fill="none" stroke="white" stroke-width="2" opacity="0.4" 
+          stroke-linecap="round"/>
+    
+    <!-- 微波涟漪 -->
+    <path d="M 20 112 Q 35 110 50 112 Q 70 114 85 112 Q 100 110 112 112" 
+          fill="none" stroke="white" stroke-width="1.5" opacity="0.3" 
+          stroke-linecap="round"/>
   </g>
+  
+  <!-- 装饰性圆点 - 呼应网站的脉冲元素 -->
+  <circle cx="25" cy="25" r="3" fill="white" opacity="0.6"/>
+  <circle cx="100" cy="30" r="2" fill="white" opacity="0.5"/>
+  <circle cx="15" cy="45" r="1.5" fill="white" opacity="0.4"/>
+  <circle cx="110" cy="50" r="1.8" fill="white" opacity="0.4"/>
+  
+  <!-- 中心发光点 -->
+  <circle cx="64" cy="64" r="2" fill="white" opacity="0.8"/>
 </svg>
