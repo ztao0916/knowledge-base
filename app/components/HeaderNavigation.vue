@@ -116,21 +116,21 @@
 <script setup lang="ts">
   // 搜索引擎配置
   const searchEngines = {
-    baidu: {
-      name: "百度",
-      url: "https://www.baidu.com/s?wd=",
-    },
     google: {
       name: "谷歌",
       url: "https://www.google.com/search?q=",
+    },
+    baidu: {
+      name: "百度",
+      url: "https://www.baidu.com/s?wd=",
     },
     bing: {
       name: "必应",
       url: "https://www.bing.com/search?q=",
     },
-    sogou: {
-      name: "搜狗",
-      url: "https://www.sogou.com/web?query=",
+    metaso: {
+      name: "秘塔",
+      url: "https://metaso.cn/search?q=",
     },
   };
 
@@ -138,7 +138,7 @@
   // const hotTags = ["设计灵感", "前端开发", "AI工具", "生活助手", "学习资源"];
 
   // 响应式状态
-  const currentEngine = ref<keyof typeof searchEngines>("baidu");
+  const currentEngine = ref<keyof typeof searchEngines>("google");
   const searchQuery = ref("");
 
   // 搜索功能
