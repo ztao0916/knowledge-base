@@ -9,7 +9,7 @@
             <div class="flex items-center gap-4">
               <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
-                <img src="/logo.svg" alt="网站Logo" class="relative w-14 h-14 bg-white rounded-xl p-2 shadow-lg" />
+                <img src="/logo.svg" alt="网站Logo" class="relative w-24 h-16 bg-white rounded-xl p-1 shadow-lg" />
               </div>
               <div>
                 <h1 class="text-2xl font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
