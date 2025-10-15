@@ -1,9 +1,6 @@
 <template>
   <div>
-    <!-- 无障碍浏览组件 -->
     <NuxtRouteAnnouncer />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    <UBanner title="This is a banner with an important message." />
   </div>
 </template>

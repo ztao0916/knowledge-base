@@ -2,27 +2,15 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  // CSS 配置
+  modules: ["@nuxt/ui"],
   css: ["~/assets/css/main.css"],
-  // 应用配置
+  ui: {
+    //不从谷歌下载字体
+    fonts: false,
+  },
   app: {
     head: {
-      title: "fairyCity",
-      meta: [
-        { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        {
-          name: "description",
-          content: "fairyCity,便捷的导航应用",
-        },
-        { name: "theme-color", content: "#B53427" },
-      ],
       link: [
-        // 默认 favicon
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-        // SVG favicon (现代浏览器)
-        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-        // PNG favicon (不同尺寸)
         {
           rel: "icon",
           type: "image/png",
@@ -32,22 +20,11 @@ export default defineNuxtConfig({
         {
           rel: "icon",
           type: "image/png",
-          sizes: "48x48",
-          href: "/favicon-48.png",
+          sizes: "64x64",
+          href: "/favicon-64.png",
         },
-        // Apple Touch Icon (使用 48x48 的 PNG)
-        { rel: "apple-touch-icon", sizes: "48x48", href: "/favicon-48.png" },
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       ],
     },
-  },
-  modules: [
-    "@nuxt/ui",
-    "@nuxt/eslint",
-    "@nuxt/image",
-    "@pinia/nuxt",
-    "@vueuse/nuxt",
-  ],
-  ui: {
-    fonts: false, // 禁用从 Google Fonts 自动获取字体
   },
 });

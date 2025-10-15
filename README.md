@@ -1,15 +1,4 @@
-# fairyCity - 个人导航网站
-
-基于 Nuxt 4 构建的现代化个人导航网站，提供简洁高效的上网入口。
-
-## 项目特色
-
-- 🎨 现代化设计，采用蓝色渐变主题
-- 🔍 集成多种搜索引擎
-- 📱 完全响应式设计
-- ⚡ 基于 Nuxt 4 的高性能架构
-- 🛠️ 使用 NuxtUI 组件库
-- ☁️ Cloudflare Workers KV 数据存储
+# Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
