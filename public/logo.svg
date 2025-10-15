@@ -1,64 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="260" height="70" viewBox="0 0 260 70" xmlns="http://www.w3.org/2000/svg">
-  <!-- 背景透明 -->
-  
-  <!-- 左侧山水图标区域 - 放大设计 -->
-  <g transform="translate(5, 3)">
-    <!-- 远山轮廓 -->
-    <path d="M5 55 L25 15 L45 55" stroke="#6b7280" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    
-    <!-- 中山轮廓 -->
-    <path d="M30 60 L50 20 L70 60" stroke="#9ca3af" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    
-    <!-- 近山轮廓 -->
-    <path d="M55 65 L75 25 L95 65" stroke="#d1d5db" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    
-    <!-- 主要水流 -->
-    <path d="M10 60 Q30 65 50 60 Q90 55 110 60" stroke="#3b82f6" stroke-width="4" fill="none" stroke-linecap="round"/>
-    
-    <!-- 次要水流 -->
-    <path d="M15 65 Q35 70 55 65 Q95 60 115 65" stroke="#60a5fa" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    
-    <!-- 第三层水流 -->
-    <path d="M20 70 Q40 73 60 70 Q100 67 120 70" stroke="#93c5fd" stroke-width="3" fill="none" stroke-linecap="round"/>
-    
-    <!-- 太阳/月亮装饰 -->
-    <circle cx="35" cy="5" r="5" fill="#f59e0b" opacity="0.8"/>
-    
-    <!-- 星星装饰 -->
-    <circle cx="65" cy="10" r="3" fill="#fbbf24" opacity="0.7"/>
-    <circle cx="85" cy="13" r="2.2" fill="#fcd34d" opacity="0.6"/>
-    
-    <!-- 云朵装饰 -->
-    <ellipse cx="15" cy="20" rx="8" ry="4" fill="#e5e7eb" opacity="0.6"/>
-    <ellipse cx="22" cy="17" rx="5" ry="2.5" fill="#f3f4f6" opacity="0.5"/>
-  </g>
-  
-  <!-- 右侧FairyCity文字区域 - 放大设计 -->
-  <g transform="translate(135, 5)">
-    <!-- Fairy 主文字 -->
-    <text x="0" y="25" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="32" font-weight="700" letter-spacing="1" fill="#1f2937">
-      Fairy
-    </text>
-    
-    <!-- City 副文字 -->
-    <text x="2" y="50" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="400" letter-spacing="2" fill="#6b7280">
-      City
-    </text>
-    
-    <!-- 装饰性下划线 -->
-    <path d="M5 55 Q45 60 85 55" stroke="url(#blueGradient)" stroke-width="3" fill="none" opacity="0.7"/>
-    
-    <!-- 装饰性元素 -->
-    <circle cx="95" cy="8" r="3" fill="#10b981" opacity="0.6"/>
-    <circle cx="100" cy="32" r="2.2" fill="#8b5cf6" opacity="0.5"/>
-  </g>
-  
-  <!-- 渐变定义 -->
+<svg width="280" height="80" viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- 定义高级阴影和发光效果 -->
   <defs>
+    <!-- 山峰渐变阴影 -->
+    <linearGradient id="mountainShadow1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4b5563;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#1f2937;stop-opacity:0.1" />
+    </linearGradient>
+    
+    <!-- 水流发光效果 -->
+    <radialGradient id="waterGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#3b82f6;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:0.1" />
+    </radialGradient>
+    
+    <!-- 文字阴影渐变 -->
+    <linearGradient id="textShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e5e7eb;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#9ca3af;stop-opacity:0.2" />
+    </linearGradient>
+    
+    <!-- 装饰元素发光 -->
+    <radialGradient id="decorationGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.3" />
+    </radialGradient>
+    
+    <!-- 蓝色渐变 -->
     <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
     </linearGradient>
   </defs>
+  
+  <!-- 背景透明 -->
+  
+  <!-- 左侧山水图标区域 - 优化阴影设计 -->
+  <g transform="translate(15, 8)">
+    <!-- 山峰阴影层 -->
+    <g opacity="0.3">
+      <path d="M12 52 L27 27 L42 52" fill="url(#mountainShadow1)" />
+      <path d="M32 57 L47 32 L62 57" fill="url(#mountainShadow1)" />
+      <path d="M52 62 L67 37 L82 62" fill="url(#mountainShadow1)" />
+    </g>
+    
+    <!-- 远山轮廓 - 添加发光效果 -->
+    <path d="M10 50 L25 25 L40 50" stroke="#6b7280" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+    
+    <!-- 中山轮廓 -->
+    <path d="M30 55 L45 30 L60 55" stroke="#9ca3af" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- 近山轮廓 -->
+    <path d="M50 60 L65 35 L80 60" stroke="#d1d5db" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- 主要水流 - 添加发光效果 -->
+    <path d="M15 60 Q30 65 45 60 Q75 55 90 60" stroke="url(#waterGlow)" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M15 60 Q30 65 45 60 Q75 55 90 60" stroke="#3b82f6" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- 次要水流 -->
+    <path d="M20 65 Q35 68 50 65 Q80 62 95 65" stroke="#60a5fa" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    
+    <!-- 第三层水流 -->
+    <path d="M25 70 Q40 72 55 70 Q85 68 100 70" stroke="#93c5fd" stroke-width="3" fill="none" stroke-linecap="round"/>
+    
+    <!-- 太阳/月亮装饰 - 添加发光效果 -->
+    <circle cx="35" cy="18" r="5" fill="url(#decorationGlow)" opacity="0.9"/>
+    <circle cx="35" cy="18" r="4" fill="#f59e0b" opacity="0.8"/>
+    
+    <!-- 星星装饰 -->
+    <circle cx="60" cy="22" r="3" fill="#fbbf24" opacity="0.7"/>
+    <circle cx="75" cy="25" r="2.2" fill="#fcd34d" opacity="0.6"/>
+    
+    <!-- 云朵装饰 -->
+    <ellipse cx="20" cy="28" rx="8" ry="4" fill="#e5e7eb" opacity="0.6"/>
+    <ellipse cx="25" cy="26" rx="5" ry="2.5" fill="#f3f4f6" opacity="0.5"/>
+  </g>
+  
+  <!-- 右侧FairyCity文字区域 - 添加优雅阴影 -->
+  <g transform="translate(125, 15)">
+    <!-- Fairy文字阴影 -->
+    <text x="2" y="22" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="32" font-weight="700" letter-spacing="1" fill="url(#textShadow)" opacity="0.4">
+      Fairy
+    </text>
+    
+    <!-- Fairy 主文字 -->
+    <text x="0" y="20" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="32" font-weight="700" letter-spacing="1" fill="#1f2937">
+      Fairy
+    </text>
+    
+    <!-- City文字阴影 -->
+    <text x="4" y="44" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="400" letter-spacing="2" fill="url(#textShadow)" opacity="0.3">
+      City
+    </text>
+    
+    <!-- City 副文字 -->
+    <text x="2" y="42" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="400" letter-spacing="2" fill="#6b7280">
+      City
+    </text>
+    
+    <!-- 装饰性下划线 - 添加发光效果 -->
+    <path d="M5 48 Q40 52 75 48" stroke="url(#blueGradient)" stroke-width="3" fill="none" opacity="0.8"/>
+    <path d="M5 48 Q40 52 75 48" stroke="#60a5fa" stroke-width="1.5" fill="none" opacity="0.6" filter="blur(1px)"/>
+    
+    <!-- 装饰性元素 -->
+    <circle cx="85" cy="15" r="3" fill="#10b981" opacity="0.6"/>
+    <circle cx="90" cy="35" r="2.2" fill="#8b5cf6" opacity="0.5"/>
+  </g>
 </svg>
