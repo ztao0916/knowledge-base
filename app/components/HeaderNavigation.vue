@@ -11,14 +11,11 @@
           <!-- Logo和标题区域 -->
           <div class="flex items-center justify-between mb-6">
             <div class="flex items-center gap-4">
-              <div class="relative group">
-                <div
-                  class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-300"
-                ></div>
+              <div class="bg-white rounded-xl p-1.5 border border-gray-200 shadow-sm">
                 <img
                   src="/logo.svg"
                   alt="网站Logo"
-                  class="relative w-24 h-16 bg-white rounded-xl p-1 shadow-lg"
+                  class="w-16 h-12"
                 />
               </div>
               <div>
@@ -115,7 +112,19 @@
 
 <script setup lang="ts">
   // 搜索引擎配置
-  const searchEngines = {
+  interface SearchEngine {
+    name: string;
+    url: string;
+  }
+
+  interface SearchEngines {
+    google: SearchEngine;
+    baidu: SearchEngine;
+    bing: SearchEngine;
+    metaso: SearchEngine;
+  }
+
+  const searchEngines: SearchEngines = {
     google: {
       name: "谷歌",
       url: "https://www.google.com/search?q=",
@@ -145,8 +154,9 @@
   const performSearch = () => {
     if (searchQuery.value.trim()) {
       const searchUrl =
-        searchEngines[currentEngine.value].url +
-        encodeURIComponent(searchQuery.value.trim());
+        (searchEngines as Record<keyof typeof searchEngines, SearchEngine>)[
+          currentEngine.value as keyof SearchEngines
+        ].url + encodeURIComponent(searchQuery.value.trim());
       window.open(searchUrl, "_blank");
     }
   };
