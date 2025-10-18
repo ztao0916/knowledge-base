@@ -1,0 +1,6 @@
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "nav_fairy_city"
+database_id = "c04f49f3-a967-459d-a455-ddcf853589fd"
+preview_database_id = "DB"
+migrations_dir = "./drizzle"
