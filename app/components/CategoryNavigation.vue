@@ -1,7 +1,23 @@
 <template>
   <div class="category-navigation">
     <UContainer class="max-w-5xl">
-      <div class="nav-section">
+      <!-- 加载状态 -->
+      <div v-if="loading" class="loading-container">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">正在加载分类数据...</p>
+      </div>
+      
+      <!-- 错误状态 -->
+      <div v-else-if="error" class="error-container">
+        <div class="error-icon">⚠️</div>
+        <p class="error-text">{{ error }}</p>
+        <button @click="refreshCategories" class="retry-button">
+          重试
+        </button>
+      </div>
+      
+      <!-- 正常内容 -->
+      <div v-else class="nav-section">
         <div 
           v-for="(category, index) in categories" 
           :key="category.id"
@@ -38,75 +54,59 @@
 </template>
 
 <script setup>
-// 静态分类数据
-const categories = ref([
-  {
-    id: 'social',
-    name: '社交媒体',
-    icon: '📱',
-    links: [
-      { name: '微博', url: 'https://weibo.com' },
-      { name: '知乎', url: 'https://www.zhihu.com' },
-      { name: '豆瓣', url: 'https://www.douban.com' },
-      { name: '小红书', url: 'https://www.xiaohongshu.com' }
+// 响应式数据
+const categories = ref([])
+const loading = ref(true)
+const error = ref(null)
+
+// 获取分类数据
+const fetchCategories = async () => {
+  try {
+    loading.value = true
+    error.value = null
+    
+    const response = await $fetch('/api/categories')
+    
+    if (response.success) {
+      categories.value = response.data
+    } else {
+      throw new Error(response.message || '获取分类数据失败')
+    }
+  } catch (err) {
+    console.error('获取分类数据失败:', err)
+    error.value = err.message || '网络请求失败'
+    
+    // 发生错误时使用备用数据
+    categories.value = [
+      {
+        id: 'social',
+        name: '社交媒体',
+        icon: '📱',
+        links: [
+          { name: '微博', url: 'https://weibo.com' },
+          { name: '知乎', url: 'https://www.zhihu.com' }
+        ]
+      }
     ]
-  },
-  {
-    id: 'video',
-    name: '视频娱乐',
-    icon: '🎬',
-    links: [
-      { name: '哔哩哔哩', url: 'https://www.bilibili.com' },
-      { name: 'YouTube', url: 'https://www.youtube.com' },
-      { name: '爱奇艺', url: 'https://www.iqiyi.com' },
-      { name: '腾讯视频', url: 'https://v.qq.com' }
-    ]
-  },
-  {
-    id: 'shopping',
-    name: '购物网站',
-    icon: '🛍️',
-    links: [
-      { name: '淘宝', url: 'https://www.taobao.com' },
-      { name: '京东', url: 'https://www.jd.com' },
-      { name: '天猫', url: 'https://www.tmall.com' },
-      { name: '拼多多', url: 'https://www.pinduoduo.com' }
-    ]
-  },
-  {
-    id: 'development',
-    name: '开发工具',
-    icon: '💻',
-    links: [
-      { name: 'GitHub', url: 'https://github.com' },
-      { name: 'Stack Overflow', url: 'https://stackoverflow.com' },
-      { name: 'CSDN', url: 'https://www.csdn.net' },
-      { name: '掘金', url: 'https://juejin.cn' }
-    ]
-  },
-  {
-    id: 'news',
-    name: '新闻资讯',
-    icon: '📰',
-    links: [
-      { name: '腾讯新闻', url: 'https://news.qq.com' },
-      { name: '今日头条', url: 'https://www.toutiao.com' },
-      { name: '新浪新闻', url: 'https://news.sina.com.cn' },
-      { name: '网易新闻', url: 'https://www.163.com' }
-    ]
-  },
-  {
-    id: 'music',
-    name: '音乐电台',
-    icon: '🎵',
-    links: [
-      { name: '网易云音乐', url: 'https://music.163.com' },
-      { name: 'QQ音乐', url: 'https://y.qq.com' },
-      { name: '酷狗音乐', url: 'https://www.kugou.com' },
-      { name: '酷我音乐', url: 'https://www.kuwo.cn' }
-    ]
+  } finally {
+    loading.value = false
   }
-])
+}
+
+// 组件挂载时获取数据
+onMounted(() => {
+  fetchCategories()
+})
+
+// 提供刷新功能
+const refreshCategories = () => {
+  fetchCategories()
+}
+
+// 暴露刷新方法给父组件
+defineExpose({
+  refreshCategories
+})
 </script>
 
 <style scoped>
@@ -480,5 +480,80 @@ const categories = ref([
   .category-icon:hover {
     transform: scale(1.1) rotate(5deg);
   }
+}
+
+/* 加载状态样式 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid rgba(99, 102, 241, 0.2);
+  border-top: 4px solid #6366f1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+.loading-text {
+  color: rgb(107 114 128);
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 错误状态样式 */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-text {
+  color: rgb(239 68 68);
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.retry-button:active {
+  transform: translateY(0);
 }
 </style>
