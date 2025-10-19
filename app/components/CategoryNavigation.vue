@@ -161,7 +161,6 @@ defineExpose({
   animation: slideInUp 0.8s ease both, floatIn 1s ease both;
   position: relative;
   overflow: hidden;
-  transform: translateY(calc(var(--card-index) * 10px));
 }
 
 .category-card::before {
@@ -347,11 +346,11 @@ defineExpose({
 
 @keyframes floatIn {
   0% {
-    transform: translateY(calc(var(--card-index) * 10px)) rotateX(15deg);
+    transform: translateY(20px) rotateX(15deg);
     opacity: 0.8;
   }
   100% {
-    transform: translateY(calc(var(--card-index) * 10px)) rotateX(0deg);
+    transform: translateY(0) rotateX(0deg);
     opacity: 1;
   }
 }
@@ -394,7 +393,6 @@ defineExpose({
   .category-card {
     padding: 1.5rem;
     border-radius: 1.25rem;
-    transform: translateY(0);
     animation: slideInUp 0.6s ease both, mobileFloatIn 0.8s ease both;
   }
   
