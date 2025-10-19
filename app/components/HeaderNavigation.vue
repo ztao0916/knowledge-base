@@ -3,105 +3,103 @@
   <nav
     class="backdrop-blur-xl bg-white/70 border border-white/20 rounded-2xl shadow-2xl shadow-blue-100/50 mb-8 animate-fade-in mx-5 mt-5"
   >
-        <div class="px-8 py-6">
-          <!-- Logo和标题区域 -->
-          <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center gap-4">
-              <div class="bg-white rounded-xl p-1.5 border border-gray-200 shadow-sm">
-                <img
-                  src="/logo.svg"
-                  alt="网站Logo"
-                  class="w-16 h-12"
-                />
-              </div>
-              <div>
-                <h1
-                  class="text-2xl font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent"
-                >
-                  FairyCity
-                </h1>
-                <p class="text-sm text-gray-500 font-light">
-                  是月亮跌进人间时，碎成的一城萤火与花香
-                </p>
-              </div>
-            </div>
-
-            <!-- 装饰性元素 -->
-            <div class="hidden md:flex items-center gap-2">
-              <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-              <div
-                class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"
-                style="animation-delay: 0.2s"
-              ></div>
-              <div
-                class="w-2 h-2 bg-pink-400 rounded-full animate-pulse"
-                style="animation-delay: 0.4s"
-              ></div>
-            </div>
+    <div class="px-8 py-6">
+      <!-- Logo和标题区域 -->
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-4">
+          <div
+            class="bg-white rounded-xl p-1.5 border border-gray-200 shadow-sm"
+          >
+            <img src="/logo.svg" alt="网站Logo" class="w-16 h-12" />
           </div>
-
-          <!-- 搜索区域 -->
-          <div class="relative">
-            <!-- 搜索引擎选择器 -->
-            <div class="flex items-center gap-2 mb-4">
-              <div class="flex gap-2">
-                <button
-                  v-for="(engine, key) in searchEngines"
-                  :key="key"
-                  @click="currentEngine = key"
-                  :class="[
-                    'px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105',
-                    currentEngine === key
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-200'
-                      : 'bg-white/60 text-gray-600 hover:bg-white/80 hover:text-gray-800 border border-gray-200/50',
-                  ]"
-                >
-                  {{ engine.name }}
-                </button>
-              </div>
-            </div>
-
-            <!-- 搜索输入框 - 现代设计 -->
-            <div class="relative group">
-              <div
-                class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300"
-              ></div>
-              <div
-                class="relative flex items-center bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 border border-white/60"
-              >
-                <div class="pl-6 pr-3">
-                  <svg
-                    class="w-5 h-5 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  v-model="searchQuery"
-                  type="text"
-                  placeholder="搜索你想要的内容..."
-                  class="flex-1 py-5 bg-transparent text-gray-700 placeholder-gray-400 focus:outline-none text-lg"
-                  @keypress.enter="performSearch"
-                />
-                <button
-                  @click="performSearch"
-                  class="mr-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                >
-                  搜索
-                </button>
-              </div>
-            </div>
+          <div>
+            <h1
+              class="text-2xl font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent"
+            >
+              FairyCity
+            </h1>
+            <p class="text-sm text-gray-500 font-light">
+              是月亮跌进人间时，碎成的一城萤火与花香
+            </p>
           </div>
         </div>
-      </nav>
+
+        <!-- 装饰性元素 -->
+        <div class="hidden md:flex items-center gap-2">
+          <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+          <div
+            class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"
+            style="animation-delay: 0.2s"
+          ></div>
+          <div
+            class="w-2 h-2 bg-pink-400 rounded-full animate-pulse"
+            style="animation-delay: 0.4s"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 搜索区域 -->
+      <div class="relative">
+        <!-- 搜索引擎选择器 -->
+        <div class="flex items-center gap-2 mb-4">
+          <div class="flex gap-2">
+            <button
+              v-for="(engine, key) in searchEngines"
+              :key="key"
+              @click="currentEngine = key"
+              :class="[
+                'px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105',
+                currentEngine === key
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-200'
+                  : 'bg-white/60 text-gray-600 hover:bg-white/80 hover:text-gray-800 border border-gray-200/50',
+              ]"
+            >
+              {{ engine.name }}
+            </button>
+          </div>
+        </div>
+
+        <!-- 搜索输入框 - 现代设计 -->
+        <div class="relative group">
+          <div
+            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300"
+          ></div>
+          <div
+            class="relative flex items-center bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-gray-200/50 border border-white/60"
+          >
+            <div class="pl-6 pr-3">
+              <svg
+                class="w-5 h-5 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </div>
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="搜索你想要的内容..."
+              class="flex-1 py-5 bg-transparent text-gray-700 placeholder-gray-400 focus:outline-none text-lg pr-4"
+              @keypress.enter="performSearch"
+            />
+            <button
+              @click="performSearch"
+              class="mr-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 whitespace-nowrap flex-shrink-0"
+            >
+              搜索
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script setup lang="ts">
@@ -267,9 +265,14 @@
       font-size: 0.875rem;
     }
 
-    .search-btn {
-      padding: 0.75rem 1.5rem;
-      font-size: 0.875rem;
+    /* 移动端搜索按钮优化 */
+    button[class*="bg-gradient-to-r"] {
+      padding: 0.75rem 1rem !important;
+      font-size: 0.875rem !important;
+      min-width: 60px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: 0.75rem !important;
     }
 
     .hot-tags {
@@ -308,6 +311,20 @@
     .search-engine-btn {
       flex: 1;
       min-width: 60px;
+    }
+
+    /* 小屏幕搜索按钮进一步优化 */
+    button[class*="bg-gradient-to-r"] {
+      padding: 0.625rem 0.875rem !important;
+      font-size: 0.8rem !important;
+      margin-left: 0.5rem !important;
+      min-width: 50px;
+      margin-right: 0.5rem !important;
+    }
+
+    /* 搜索框容器优化 */
+    .relative.group > .relative.flex {
+      flex-wrap: nowrap;
     }
 
     .hot-tags {
