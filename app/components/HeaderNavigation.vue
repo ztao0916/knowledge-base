@@ -1,12 +1,8 @@
 <template>
-  <div
-    class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 p-5"
+  <!-- 顶部导航栏 - 玻璃拟态效果 -->
+  <nav
+    class="backdrop-blur-xl bg-white/70 border border-white/20 rounded-2xl shadow-2xl shadow-blue-100/50 mb-8 animate-fade-in mx-5 mt-5"
   >
-    <UContainer class="max-w-5xl">
-      <!-- 顶部导航栏 - 玻璃拟态效果 -->
-      <nav
-        class="backdrop-blur-xl bg-white/70 border border-white/20 rounded-2xl shadow-2xl shadow-blue-100/50 mb-8 animate-fade-in"
-      >
         <div class="px-8 py-6">
           <!-- Logo和标题区域 -->
           <div class="flex items-center justify-between mb-6">
@@ -106,8 +102,6 @@
           </div>
         </div>
       </nav>
-    </UContainer>
-  </div>
 </template>
 
 <script setup lang="ts">
