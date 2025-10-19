@@ -1,8 +1,11 @@
 import { drizzle, DrizzleD1Database } from "drizzle-orm/d1";
 import { usersTable } from "../db/schema/user";
+import { categoriesTable, linksTable } from "../db/schema/categories";
 
 const schema = {
   usersTable,
+  categoriesTable,
+  linksTable,
 };
 
 declare module "h3" {

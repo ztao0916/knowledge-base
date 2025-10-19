@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: "FairyCity",
       link: [
         {
           rel: "icon",
